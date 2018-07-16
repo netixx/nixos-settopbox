@@ -217,7 +217,7 @@ in
 
   imports =
     [
-      (builtins.fetchGit {url=https://github.com/netixx/nixos-home; rev="master";} + "/default.nix")
+      (builtins.fetchGit {url=https://github.com/netixx/nixos-home; ref="master";} + "/default.nix")
       ./dhcp-server.nix
       ./dns.nix
       ./firewall.nix
