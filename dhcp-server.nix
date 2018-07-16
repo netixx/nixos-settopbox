@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 with pkgs.lib;
-with (import (builtins.fetchGit {url=https://github.com/netixx/nixos-pkgs; rev="master";} + "/iptools.nix")) {inherit config pkgs;};
+with (import (builtins.fetchGit https://github.com/netixx/nixos-pkgs + "/iptools.nix")) {inherit config pkgs;};
 let
   cfg = config.settopbox;
   dhcpInterfaces = attrNames (filterAttrs (_: value: value.services.dhcp.enable) cfg.lans );
