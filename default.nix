@@ -218,6 +218,7 @@ in
   imports =
     [
       (builtins.fetchGit https://github.com/netixx/nixos-home + "/default.nix")
+      <nixpkgs/nixos/modules/services/networking/freeradius.nix>
       ./dhcp-server.nix
       ./dns.nix
       ./firewall.nix
