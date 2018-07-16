@@ -226,7 +226,6 @@ in
       ./openvpn.nix
       ./radius.nix
       ./service-advertisment.nix
-      ./wifi.nix
     ];
 
 }
