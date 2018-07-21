@@ -140,6 +140,7 @@ in
 
         chain input_basic {
           tcp dport ntp accept
+          udp dport ntp accept
           udp dport {bootpc, bootps} accept
           udp dport domain accept
           tcp dport domain accept
@@ -155,8 +156,7 @@ in
           ip6 nexthdr icmpv6 icmpv6 type echo-request limit rate 10/second accept
           ip protocol icmp icmp type echo-request limit rate 10/second accept
 
-          # temporary pass all
-          accept
+          ${cfg.firewall.rules.trusted}
         }
 
         chain input_WAN {

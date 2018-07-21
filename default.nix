@@ -78,6 +78,8 @@ let
               default = "";
               description = "Rules for this LAN";
           };
+
+
       };
   };
 
@@ -206,6 +208,12 @@ in
           type = types.str;
           default = "";
           description = "Additionnal input rule to apply";
+      };
+
+      settopbox.firewall.rules.trusted = mkOption {
+          type = types.str;
+          default = "";
+          description = "Additionnal rules to apply to trusted (LAN) interfaces";
       };
 
       settopbox.dns.extraConfig = mkOption {
