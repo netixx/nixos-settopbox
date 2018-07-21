@@ -5,9 +5,9 @@
     enable = true;
   };
 
-  containers.ntp = {
-    autoStart = true;
-    config = {config, pkgs, lib, ...}: {
+  # containers.ntp = {
+  #   autoStart = true;
+  #   config = {config, pkgs, lib, ...}: {
       services.chrony = {
         enable = true;
         servers = [ "127.127.1.0" ];
@@ -17,7 +17,7 @@
           local stratum 12
         '';
       };
-    };
-  };
+  #   };
+  # };
 
 }
