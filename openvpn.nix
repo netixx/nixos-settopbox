@@ -17,7 +17,7 @@ let
 
     # ciphers
     cipher AES-256-CBC
-    auth SHA256
+    auth SHA512
 
     # double authentication
     script-security 3
