@@ -2,6 +2,7 @@
 let
   commonConfig = srv: ''
     # server mode
+    mode server
     tls-server
 
     # system settings
