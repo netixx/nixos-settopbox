@@ -31,6 +31,7 @@ let
     comp-lzo adaptive
     topology subnet
     float
+    mssfix 1300
     push "dhcp-option DOMAIN ${config.home.domain}"
     push "dhcp-option DNS ${config.home.dns}"
     push "redirect-gateway def1"
