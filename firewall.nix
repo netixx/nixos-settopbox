@@ -145,6 +145,11 @@ in
           udp dport domain accept
           tcp dport domain accept
 
+          # web browsing
+          tcp dport {80, 443} accept
+          # quik
+          udp dport 443 accept
+
           continue
         }
 
