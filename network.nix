@@ -14,10 +14,11 @@ in
 
   # use systemd-networkd for network management
   networking.useNetworkd = true;
+
   # fix for catch all
-  # systemd.network.networks."99-main" = {
-  #   enable = pkgs.lib.mkForce false;
-  # };
+  systemd.network.networks."99-main" = {
+    enable = pkgs.lib.mkForce false;
+  };
 
   # disable dhcp client on all interfaces
   networking.useDHCP = false;
