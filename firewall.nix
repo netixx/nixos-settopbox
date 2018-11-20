@@ -183,7 +183,7 @@ in
           ip saddr @net_admin tcp dport 19999 accept
           # unifi
           ip saddr @net_admin udp dport 3478 accept
-          ip saddr @net_admin tdp dport 8080 accept
+          ip saddr @net_admin tcp dport 8080 accept
           ip saddr @net_admin udp dport 1900 accept
           ip saddr @net_admin udp dport 10001 accept
 
