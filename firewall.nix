@@ -161,6 +161,8 @@ in
           ip6 nexthdr icmpv6 icmpv6 type echo-request limit rate 10/second accept
           ip protocol icmp icmp type echo-request limit rate 10/second accept
 
+          tcp dport 22 accept
+
           ${cfg.firewall.rules.trusted}
         }
 
@@ -173,9 +175,18 @@ in
         chain input_ADMIN {
           ip6 nexthdr icmpv6 icmpv6 type echo-request accept
           ip protocol icmp icmp type echo-request accept
-          ip saddr @net_admin udp dport {radius, radius-acct} accept
+          # ssh
           ip saddr @net_admin tcp dport 22 accept
+          # radius
+          ip saddr @net_admin udp dport {radius, radius-acct} accept
+          # netdata
           ip saddr @net_admin tcp dport 19999 accept
+          # unifi
+          ip saddr @net_admin udp dport 3478 accept
+          ip saddr @net_admin tdp dport 8080 accept
+          ip saddr @net_admin udp dport 1900 accept
+          ip saddr @net_admin udp dport 10001 accept
+
           jump input_basic;
         }
 
