@@ -101,7 +101,8 @@ in
           iifname WAN  jump input_WAN
           iifname ADMIN jump input_ADMIN
 
-          # protect admin
+          # protect admin but allow some protocols
+          ip saddr @net_usr daddr @net_admin dport { http, https, ssh, 19999 } accept
           ip daddr @net_admin drop
           # ip saddr != @net_admin daddr @net_admin drop
 
@@ -181,10 +182,6 @@ in
           ip saddr @net_admin tcp dport 22 accept
           # netdata
           ip saddr @net_admin tcp dport 19999 accept
-
-          # restricted range of ports for users
-          # TODO remove 22 and 19999
-          ip saddr @net_usr tcp dport {80, 443, 22, 19999} accept
 
           # infra
           # radius
