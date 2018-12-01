@@ -175,12 +175,20 @@ in
         chain input_ADMIN {
           ip6 nexthdr icmpv6 icmpv6 type echo-request accept
           ip protocol icmp icmp type echo-request accept
+
+          # users/admin
           # ssh
           ip saddr @net_admin tcp dport 22 accept
-          # radius
-          ip saddr @net_admin udp dport {radius, radius-acct} accept
           # netdata
           ip saddr @net_admin tcp dport 19999 accept
+
+          # restricted range of ports for users
+          # TODO remove 22 and 19999
+          ip saddr @net_usr tcp dport {80, 443, 22, 19999} accept
+
+          # infra
+          # radius
+          ip saddr @net_admin udp dport {radius, radius-acct} accept
           # unifi
           ip saddr @net_admin udp dport 3478 accept
           ip saddr @net_admin tcp dport 8080 accept
