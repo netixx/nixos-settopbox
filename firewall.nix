@@ -102,7 +102,7 @@ in
           iifname ADMIN jump input_ADMIN
 
           # protect admin but allow some protocols
-          ip saddr @net_usr daddr @net_admin dport { http, https, ssh, 19999 } accept
+          ip saddr @net_usr ip daddr @net_admin dport { http, https, ssh, 19999 } accept
           ip daddr @net_admin drop
           # ip saddr != @net_admin daddr @net_admin drop
 
