@@ -56,7 +56,7 @@ in
   ] ++ mapAttrsToList (k: v: { name = k; ipv4.addresses = [ { address = (makeGateway v); prefixLength = v.prefixLength; } ]; } ) cfg.lans;
 
   networking.vswitches = {
-    vs-intt = {
+    vs-int = {
       interfaces= [
         {
           name="pLAN";
