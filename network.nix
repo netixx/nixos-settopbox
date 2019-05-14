@@ -33,6 +33,7 @@ in
       interface="pLAN";
     };
   };
+  systemd.network.networks."40-WAN".DHCP = "ipv6";
 
   networking.interfaces = [
     {
