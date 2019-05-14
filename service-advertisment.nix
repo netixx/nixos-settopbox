@@ -10,7 +10,7 @@ in
     domainName = config.home.domain;
     interfaces = avahiInterfaces;
     ipv4 = true;
-    ipv6 = false;
+    ipv6 = true;
     reflector = true;
   };
 

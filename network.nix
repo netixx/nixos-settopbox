@@ -5,10 +5,10 @@ let
   cfg = config.settopbox;
 in
 {
-  imports = [
-    # include fixes when ipv6 is disabled
-    (builtins.fetchGit https://github.com/netixx/nixos-pkgs + "/network-ipv6-fixes.nix")
-  ];
+  # imports = [
+  #   # include fixes when ipv6 is disabled
+  #   (builtins.fetchGit https://github.com/netixx/nixos-pkgs + "/network-ipv6-fixes.nix")
+  # ];
   # makes sure renaming interfaces works
   # networking.usePredictableInterfaceNames=false;
 
@@ -25,7 +25,7 @@ in
 
   systemd.network.networks."40-WAN".gateway = ["10.0.0.254"];
 
-  networking.enableIPv6 = false;
+  networking.enableIPv6 = true;
 
   networking.vlans = {
     ADMIN = {
