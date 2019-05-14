@@ -23,8 +23,6 @@ in
   # disable dhcp client on all interfaces
   networking.useDHCP = false;
 
-  systemd.network.networks."40-WAN".gateway = ["10.0.0.254"];
-
   networking.enableIPv6 = true;
 
   networking.vlans = {
@@ -33,18 +31,27 @@ in
       interface="pLAN";
     };
   };
-  systemd.network.networks."40-WAN".DHCP = "ipv6";
+
+  systemd.network.networks."40-WAN" = {
+    DHCP = "ipv6";
+    gateway = ["10.0.0.254"];
+    addresses = [
+      {
+        Address = "10.0.0.253/24";
+      }
+    ];
+  };
 
   networking.interfaces = [
-    {
-      name = "WAN";
-      ipv4.addresses = [
-        {
-          address = "10.0.0.253";
-          prefixLength = 24;
-        }
-      ];
-    }
+    # {
+    #   name = "WAN";
+    #   ipv4.addresses = [
+    #     {
+    #       address = "10.0.0.253";
+    #       prefixLength = 24;
+    #     }
+    #   ];
+    # }
     {
       name = "ADMIN";
       ipv4.addresses = [
