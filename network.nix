@@ -32,16 +32,6 @@ in
     };
   };
 
-  systemd.network.networks."40-WAN" = {
-    DHCP = "ipv6";
-    gateway = ["10.0.0.254"];
-    addresses = [
-      {
-        Address = "10.0.0.253/24";
-      }
-    ];
-  };
-
   networking.interfaces = [
     # {
     #   name = "WAN";
