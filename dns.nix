@@ -48,8 +48,8 @@ in
           val-log-level: 2
 
           do-ip4: yes
-          do-ip6: yes
-          prefer-ipv6: yes
+          do-ip6: no
+          # prefer-ipv6: yes
           do-udp: yes
           do-tcp: yes
 
