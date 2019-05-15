@@ -5,10 +5,10 @@ let
   cfg = config.settopbox;
 in
 {
-  # imports = [
+  imports = [
   #   # include fixes when ipv6 is disabled
-  #   (builtins.fetchGit https://github.com/netixx/nixos-pkgs + "/network-ipv6-fixes.nix")
-  # ];
+    (builtins.fetchGit https://github.com/netixx/nixos-pkgs + "/network-ipv6-fixes.nix")
+  ];
   # makes sure renaming interfaces works
   # networking.usePredictableInterfaceNames=false;
 
