@@ -168,6 +168,8 @@ in
         }
 
         chain input_WAN {
+          ip6 nexthdr icmpv6 icmpv6 type { destination-unreachable, packet-too-big, time-exceeded, parameter-problem, nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert } accept
+          ip protocol icmp icmp type { destination-unreachable, router-advertisement, time-exceeded, parameter-problem } accept
           tcp dport 1195 accept
           udp dport 1196 accept
           counter drop
