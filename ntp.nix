@@ -22,6 +22,8 @@
           allow 127.0.0.0/8
           allow 10.0.0.0/8
           local stratum 13 orphan
+
+          rtcfile /var/lib/chrony/rtc
         '';
       };
   #   };
