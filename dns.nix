@@ -168,6 +168,7 @@ in
 
           ${concatStringsSep "\n\n" dnsRecords}
 
+          local-zone: "use-application-dns.net" static
           ${dnsExtraConfig}
 
           # dhcp lease entries
