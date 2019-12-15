@@ -3,6 +3,7 @@ with pkgs.lib;
 with (import (builtins.fetchGit https://github.com/netixx/nixos-pkgs + "/iptools.nix")) {inherit config pkgs;};
 let
   cfg = config.settopbox;
+  unstable  = import <unstable> {};
 in
 {
   imports = [
@@ -52,6 +53,8 @@ in
       ];
     }
   ] ++ mapAttrsToList (k: v: { name = k; ipv4.addresses = [ { address = (makeGateway v); prefixLength = v.prefixLength; } ]; } ) cfg.lans;
+
+  virtualisation.vswitch.package = unstable.openvswitch;
 
   networking.vswitches = {
     vs-int = {
