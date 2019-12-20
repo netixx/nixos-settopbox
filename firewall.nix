@@ -110,6 +110,7 @@ in
 
           iifname "tun1" jump input_USR_WIR
           iifname "tun0" jump input_USR_WIR
+          iifname "wg0" jump input_USR_WIR
 
           # ICMP
           # routers may also want: mld-listener-query, nd-router-solicit
@@ -172,6 +173,7 @@ in
           ip protocol icmp icmp type { destination-unreachable, router-advertisement, time-exceeded, parameter-problem } accept
           tcp dport 1195 accept
           udp dport 1196 accept
+          udp dport 51820 accept
           counter drop
         }
 
