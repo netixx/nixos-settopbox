@@ -182,16 +182,22 @@ in
     };
   };
 
-  # fallback DNS (if unbound fails)
-  # services.resolved = {
-  #   enable = true;
-  #   llmnr = "false";
-  # };
-
   networking.nameservers = [
     "127.0.0.1"
     # "127.0.0.53"
   ];
+
+  # fallback DNS (if unbound fails)
+  services.resolved = {
+    enable = true;
+    extraConfig = ''
+      DNSStubListener=no
+    '';
+    fallbackDns = [ "1.1.1.1" "8.8.8.8" ];
+    dnssec = "allow-downgrade";
+    domains = [ "xinet.fr" ];
+    llmnr = "resolve";
+  };
 
   # systemd.services.unbound.wants = ["network-online.target"];
   # systemd.services.unbound.after = ["network-online.target"];
